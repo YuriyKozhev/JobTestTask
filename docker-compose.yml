@@ -35,12 +35,15 @@ services:
     restart: always
     networks:
       - net
+    volumes:
+      - rabbitmq-volume:/data
     ports:
       - "5672:5672"
       - "15672:15672"
 
 volumes:
   db-volume:
+  rabbitmq-volume:
 
 networks:
   net:
