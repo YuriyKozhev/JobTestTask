@@ -1,0 +1,50 @@
+version: "3.5"
+
+services:
+  app:
+    build:
+      context: app
+      dockerfile: Dockerfile
+
+  db:
+    platform: linux/x86_64
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mysqldb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes:
+      - db-volume:/var/lib/mysql
+    networks:
+      - net
+    ports:
+      - "3306:3306"
+
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    networks:
+      - net
+    ports:
+      - "8080:8080"
+
+  rabbitmq:
+    image: rabbitmq:3.9.14-management
+    restart: always
+    networks:
+      - net
+    volumes:
+      - rabbitmq-volume:/data
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  db-volume:
+  rabbitmq-volume:
+
+networks:
+  net:
+    driver: bridge
