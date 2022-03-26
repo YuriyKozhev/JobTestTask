@@ -22,3 +22,7 @@ services:
 
 volumes:
   db-volume:
+
+networks:
+  net:
+    driver: bridge
