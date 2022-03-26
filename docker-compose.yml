@@ -28,6 +28,12 @@ services:
     ports:
       - "8000:8080"
 
+  rabbitmq:
+    image: rabbitmq:3.9.14
+    restart: always
+    networks:
+      - net
+
 volumes:
   db-volume:
 
