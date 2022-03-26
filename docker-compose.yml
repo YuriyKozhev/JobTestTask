@@ -19,6 +19,8 @@ services:
       - db-volume:/var/lib/mysql
     networks:
       - net
+    ports:
+      - "3306:3306"
 
   adminer:
     image: adminer
@@ -26,13 +28,16 @@ services:
     networks:
       - net
     ports:
-      - "8000:8080"
+      - "8080:8080"
 
   rabbitmq:
     image: rabbitmq:3.9.14
     restart: always
     networks:
       - net
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
 volumes:
   db-volume:
