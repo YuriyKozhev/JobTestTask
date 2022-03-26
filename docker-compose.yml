@@ -17,8 +17,16 @@ services:
       MYSQL_PASSWORD: admin
     volumes:
       - db-volume:/var/lib/mysql
+    networks:
+      - net
+
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - net
     ports:
-      - "3306:3306"
+      - "8000:8080"
 
 volumes:
   db-volume:
