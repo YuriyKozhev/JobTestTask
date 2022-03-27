@@ -8,6 +8,8 @@ click==8.0.4
     # via pip-tools
 pep517==0.12.0
     # via pip-tools
+pika==1.2.0
+    # via -r requirements.in
 pip-tools==6.5.1
     # via -r requirements.in
 tomli==2.0.1
