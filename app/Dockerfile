@@ -7,6 +7,8 @@ USER root
 COPY . .
 
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install pip-tools==6.5.1
+RUN pip-compile
+RUN pip-sync
 
 CMD python app.py
